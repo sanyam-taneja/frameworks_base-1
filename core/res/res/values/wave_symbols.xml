@@ -75,4 +75,7 @@
     <!-- Post reset runnable for all clients -->
     <java-symbol type="bool" name="config_fingerprintPostResetRunnableForAllClients" />
 
+    <!-- FOD icon dimming -->
+    <java-symbol type="bool" name="config_targetUsesInKernelDimming" />
+
 </resources>
