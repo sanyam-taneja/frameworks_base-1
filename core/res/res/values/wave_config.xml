@@ -55,7 +55,7 @@
     <integer name="config_screenRecorderMaxFramerate">0</integer>
 
     <!-- Enable face auth when swiping security view -->
-    <bool name="config_faceAuthOnSecurityView">false</bool>
+    <bool name="config_faceAuthOnSecurityView">true</bool>
 
     <!-- Defines the sysfs attribute path used by pocket bridge to communicate pocket state to the pocket judge kernel driver. -->
     <string name="config_pocketBridgeSysfsInpocket" translatable="false"></string>
@@ -79,5 +79,8 @@
     <!-- Hide FOD while Going to sleep from lockscreen to avoid HBM flicker
 	 or FOD Circle hiding after the screen is put to sleep -->
     <bool name="config_hideFodCircleGoingToSleep">true</bool>
+
+     <!-- Whether device has VOOC charging support -->
+    <bool name="config_hasVoocCharger">false</bool>
 
 </resources>

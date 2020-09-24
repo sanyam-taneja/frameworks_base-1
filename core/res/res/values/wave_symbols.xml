@@ -82,4 +82,7 @@
        or FOD Circle hiding after the screen is put to sleep -->
     <java-symbol type="bool" name="config_hideFodCircleGoingToSleep" />
 
-</resources>
+    <!-- Whether device has VOOC charging support -->
+    <java-symbol type="bool" name="config_hasVoocCharger" />
+
+</resources> 
