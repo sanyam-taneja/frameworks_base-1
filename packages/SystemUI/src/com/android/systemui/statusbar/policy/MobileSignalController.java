@@ -105,6 +105,8 @@ public class MobileSignalController extends SignalController<
 
     private boolean mIsVowifiAvailable;
 
+    private int mImsTransportType = 0;
+
     // TODO: Reduce number of vars passed in, if we have the NetworkController, probably don't
     // need listener lists anymore.
     public MobileSignalController(Context context, Config config, boolean hasMobileData,
@@ -737,6 +739,13 @@ public class MobileSignalController extends SignalController<
                 mServiceState.getDataNetworkType() : TelephonyManager.NETWORK_TYPE_UNKNOWN;
     }
 
+    private boolean isVowifiAvailable() {
+        return mCurrentState.voiceCapable &&  mCurrentState.imsRegistered
+                && ((mServiceState != null && mServiceState.getDataNetworkType()
+                == TelephonyManager.NETWORK_TYPE_IWLAN)
+                || mImsTransportType == AccessNetworkConstants.TRANSPORT_TYPE_WLAN);
+    }
+
     public boolean isVowifiAvailable() {
         return mCurrentState.voiceCapable && mCurrentState.imsRegistered
                 && (getDataNetworkType() == TelephonyManager.NETWORK_TYPE_IWLAN
@@ -854,6 +863,7 @@ public class MobileSignalController extends SignalController<
                     Log.d(mTag, "onRegistered imsTransportType=" + imsTransportType);
                     mCurrentState.imsRegistered = true;
                     mContext.sendBroadcast(new Intent(IMS_STATUS_CHANGED));
+                    mImsTransportType = imsTransportType;
                     notifyListenersIfNecessary();
                 }
 
